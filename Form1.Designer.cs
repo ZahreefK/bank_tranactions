@@ -33,11 +33,9 @@
             txtAccountName = new TextBox();
             label3 = new Label();
             txtDeposit = new TextBox();
-            txtWithdrawl = new TextBox();
-            label4 = new Label();
             btnDisplay = new Button();
             btnClear = new Button();
-            button3 = new Button();
+            btnQuit = new Button();
             lstOut = new ListBox();
             SuspendLayout();
             // 
@@ -67,11 +65,12 @@
             txtAccountName.Name = "txtAccountName";
             txtAccountName.Size = new Size(182, 23);
             txtAccountName.TabIndex = 2;
+            txtAccountName.Enter += txtAccountName_Enter;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(100, 98);
+            label3.Location = new Point(100, 101);
             label3.Name = "label3";
             label3.Size = new Size(47, 15);
             label3.TabIndex = 3;
@@ -84,56 +83,44 @@
             txtDeposit.Name = "txtDeposit";
             txtDeposit.Size = new Size(182, 23);
             txtDeposit.TabIndex = 4;
-            // 
-            // txtWithdrawl
-            // 
-            txtWithdrawl.Location = new Point(153, 127);
-            txtWithdrawl.Name = "txtWithdrawl";
-            txtWithdrawl.Size = new Size(182, 23);
-            txtWithdrawl.TabIndex = 6;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(86, 130);
-            label4.Name = "label4";
-            label4.Size = new Size(61, 15);
-            label4.TabIndex = 5;
-            label4.Text = "Withdrawl";
-            label4.Click += label4_Click;
+            txtDeposit.TextChanged += txtDeposit_TextChanged;
+            txtDeposit.Enter += txtDeposit_Enter;
             // 
             // btnDisplay
             // 
-            btnDisplay.Location = new Point(100, 301);
+            btnDisplay.Location = new Point(67, 301);
             btnDisplay.Name = "btnDisplay";
             btnDisplay.Size = new Size(75, 42);
             btnDisplay.TabIndex = 8;
             btnDisplay.Text = "&Display Answer";
             btnDisplay.UseVisualStyleBackColor = true;
+            btnDisplay.Click += btnDisplay_Click;
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(212, 301);
+            btnClear.Location = new Point(202, 301);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(75, 23);
+            btnClear.Size = new Size(75, 42);
             btnClear.TabIndex = 9;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
-            // button3
+            // btnQuit
             // 
-            button3.Location = new Point(334, 301);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 10;
-            button3.Text = "&Quit";
-            button3.UseVisualStyleBackColor = true;
+            btnQuit.Location = new Point(334, 301);
+            btnQuit.Name = "btnQuit";
+            btnQuit.Size = new Size(75, 42);
+            btnQuit.TabIndex = 10;
+            btnQuit.Text = "&Quit";
+            btnQuit.UseVisualStyleBackColor = true;
+            btnQuit.Click += button3_Click;
             // 
             // lstOut
             // 
             lstOut.FormattingEnabled = true;
             lstOut.ItemHeight = 15;
-            lstOut.Location = new Point(86, 156);
+            lstOut.Location = new Point(86, 143);
             lstOut.Name = "lstOut";
             lstOut.Size = new Size(323, 139);
             lstOut.TabIndex = 7;
@@ -145,11 +132,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(510, 392);
             Controls.Add(lstOut);
-            Controls.Add(button3);
+            Controls.Add(btnQuit);
             Controls.Add(btnClear);
             Controls.Add(btnDisplay);
-            Controls.Add(txtWithdrawl);
-            Controls.Add(label4);
             Controls.Add(txtDeposit);
             Controls.Add(label3);
             Controls.Add(txtAccountName);
@@ -168,11 +153,9 @@
         private TextBox txtAccountName;
         private Label label3;
         private TextBox txtDeposit;
-        private TextBox txtWithdrawl;
-        private Label label4;
         private Button btnDisplay;
         private Button btnClear;
-        private Button button3;
+        private Button btnQuit;
         private ListBox lstOut;
     }
 }
