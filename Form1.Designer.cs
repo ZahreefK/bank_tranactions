@@ -66,6 +66,7 @@
             txtAccountName.Size = new Size(182, 23);
             txtAccountName.TabIndex = 2;
             txtAccountName.Enter += txtAccountName_Enter;
+            txtAccountName.Leave += txtAccountName_Leave;
             // 
             // label3
             // 
@@ -75,7 +76,6 @@
             label3.Size = new Size(47, 15);
             label3.TabIndex = 3;
             label3.Text = "Deposit";
-            label3.Click += label3_Click;
             // 
             // txtDeposit
             // 
@@ -83,12 +83,12 @@
             txtDeposit.Name = "txtDeposit";
             txtDeposit.Size = new Size(182, 23);
             txtDeposit.TabIndex = 4;
-            txtDeposit.TextChanged += txtDeposit_TextChanged;
             txtDeposit.Enter += txtDeposit_Enter;
+            txtDeposit.Leave += txtDeposit_Leave;
             // 
             // btnDisplay
             // 
-            btnDisplay.Location = new Point(67, 301);
+            btnDisplay.Location = new Point(72, 301);
             btnDisplay.Name = "btnDisplay";
             btnDisplay.Size = new Size(75, 42);
             btnDisplay.TabIndex = 8;
@@ -114,7 +114,7 @@
             btnQuit.TabIndex = 10;
             btnQuit.Text = "&Quit";
             btnQuit.UseVisualStyleBackColor = true;
-            btnQuit.Click += button3_Click;
+            btnQuit.Click += btnQuit_Click;
             // 
             // lstOut
             // 
