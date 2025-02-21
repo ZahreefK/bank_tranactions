@@ -30,7 +30,15 @@ namespace ZahreefK
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
+            string accountName;
+            double deposit, balance; 
+            //read text boxes into variables 
+            accountName = txtAccountName.Text;
+            //Parse converts strings to ints or doubles
+            deposit = double.Parse(txtDeposit.Text);
 
+            balance = deposit;
+            lstOut.Items.Add(balance.ToString("C"));
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
