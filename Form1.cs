@@ -38,6 +38,8 @@ namespace ZahreefK
             deposit = double.Parse(txtDeposit.Text);
 
             balance = deposit;
+            lstOut.Items.Add("The account name is " + accountName);
+            lstOut.Items.Add("The deposit is " + deposit.ToString("C"));
             lstOut.Items.Add(balance.ToString("C"));
         }
 
