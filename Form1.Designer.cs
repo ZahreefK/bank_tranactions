@@ -37,6 +37,8 @@
             btnClear = new Button();
             btnQuit = new Button();
             lstOut = new ListBox();
+            label4 = new Label();
+            txtCurrentBalance = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -44,7 +46,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Green;
-            label1.Location = new Point(202, -1);
+            label1.Location = new Point(202, 9);
             label1.Name = "label1";
             label1.Size = new Size(85, 30);
             label1.TabIndex = 0;
@@ -53,7 +55,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(67, 64);
+            label2.Location = new Point(100, 59);
             label2.Name = "label2";
             label2.Size = new Size(87, 15);
             label2.TabIndex = 1;
@@ -61,7 +63,7 @@
             // 
             // txtAccountName
             // 
-            txtAccountName.Location = new Point(153, 61);
+            txtAccountName.Location = new Point(241, 56);
             txtAccountName.Name = "txtAccountName";
             txtAccountName.Size = new Size(182, 23);
             txtAccountName.TabIndex = 2;
@@ -71,24 +73,24 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(100, 101);
+            label3.Location = new Point(100, 120);
             label3.Name = "label3";
             label3.Size = new Size(47, 15);
-            label3.TabIndex = 3;
+            label3.TabIndex = 5;
             label3.Text = "Deposit";
             // 
             // txtDeposit
             // 
-            txtDeposit.Location = new Point(153, 98);
+            txtDeposit.Location = new Point(241, 117);
             txtDeposit.Name = "txtDeposit";
             txtDeposit.Size = new Size(182, 23);
-            txtDeposit.TabIndex = 4;
+            txtDeposit.TabIndex = 6;
             txtDeposit.Enter += txtDeposit_Enter;
             txtDeposit.Leave += txtDeposit_Leave;
             // 
             // btnDisplay
             // 
-            btnDisplay.Location = new Point(79, 301);
+            btnDisplay.Location = new Point(100, 308);
             btnDisplay.Name = "btnDisplay";
             btnDisplay.Size = new Size(75, 42);
             btnDisplay.TabIndex = 8;
@@ -98,7 +100,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(202, 301);
+            btnClear.Location = new Point(212, 308);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 42);
             btnClear.TabIndex = 9;
@@ -108,7 +110,7 @@
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(334, 301);
+            btnQuit.Location = new Point(348, 308);
             btnQuit.Name = "btnQuit";
             btnQuit.Size = new Size(75, 42);
             btnQuit.TabIndex = 10;
@@ -120,17 +122,37 @@
             // 
             lstOut.FormattingEnabled = true;
             lstOut.ItemHeight = 15;
-            lstOut.Location = new Point(86, 143);
+            lstOut.Location = new Point(101, 146);
             lstOut.Name = "lstOut";
             lstOut.Size = new Size(323, 139);
             lstOut.TabIndex = 7;
             lstOut.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(100, 91);
+            label4.Name = "label4";
+            label4.Size = new Size(91, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Current Balance";
+            // 
+            // txtCurrentBalance
+            // 
+            txtCurrentBalance.Location = new Point(241, 88);
+            txtCurrentBalance.Name = "txtCurrentBalance";
+            txtCurrentBalance.Size = new Size(182, 23);
+            txtCurrentBalance.TabIndex = 4;
+            txtCurrentBalance.Enter += txtCurrentBalance_Enter;
+            txtCurrentBalance.Leave += txtCurrentBalance_Leave;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(510, 392);
+            Controls.Add(txtCurrentBalance);
+            Controls.Add(label4);
             Controls.Add(lstOut);
             Controls.Add(btnQuit);
             Controls.Add(btnClear);
@@ -157,5 +179,7 @@
         private Button btnClear;
         private Button btnQuit;
         private ListBox lstOut;
+        private Label label4;
+        private TextBox txtCurrentBalance;
     }
 }

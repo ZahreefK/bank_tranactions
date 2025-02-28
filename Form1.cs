@@ -11,7 +11,7 @@ namespace ZahreefK
         {
             txtAccountName.Text = "";
             txtDeposit.Text = "";
-
+            txtCurrentBalance.Text = "";
             lstOut.Items.Clear();
             txtAccountName.Focus();
         }
@@ -31,16 +31,28 @@ namespace ZahreefK
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             string accountName;
-            double deposit, balance; 
+            double deposit, currentBal, newBal;
+            bool dvalid, cValid;
             //read text boxes into variables 
             accountName = txtAccountName.Text;
             //Parse converts strings to ints or doubles
-            deposit = double.Parse(txtDeposit.Text);
-
-            balance = deposit;
-            lstOut.Items.Add("The account name is " + accountName);
-            lstOut.Items.Add("The deposit is " + deposit.ToString("C"));
-            lstOut.Items.Add(balance.ToString("C"));
+            /*
+               deposit = double.Parse(txtDeposit.Text);
+            */
+            cValid = double.TryParse(txtCurrentBalance.Text, out currentBal);
+            dvalid = double.TryParse(txtDeposit.Text, out deposit);
+            if (dvalid && cValid)
+            {
+                newBal = (deposit + currentBal);
+                lstOut.Items.Add("The account name is " + accountName);
+                lstOut.Items.Add("The deposit is " + deposit.ToString("C"));
+                lstOut.Items.Add("New Balance is: " + newBal.ToString("C"));
+                lstOut.Items.Add(newBal.ToString("C"));
+            }
+            else
+            {
+                lstOut.Items.Add("some of the numeric entruies were not entered correctly");
+            }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -56,6 +68,16 @@ namespace ZahreefK
         private void txtDeposit_Leave(object sender, EventArgs e)
         {
             txtDeposit.BackColor = SystemColors.Window;
+        }
+
+        private void txtCurrentBalance_Enter(object sender, EventArgs e)
+        {
+            txtCurrentBalance.BackColor = Color.Beige;
+        }
+
+        private void txtCurrentBalance_Leave(object sender, EventArgs e)
+        {
+            txtCurrentBalance.BackColor= SystemColors.Window;
         }
     }
 }
