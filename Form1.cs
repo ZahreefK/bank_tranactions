@@ -44,9 +44,10 @@ namespace ZahreefK
             if (dvalid && cValid)
             {
                 newBal = (deposit + currentBal);
-                lstOut.Items.Add("The account name is " + accountName);
-                lstOut.Items.Add("The deposit is " + deposit.ToString("C"));
-                lstOut.Items.Add("New Balance is: " + newBal.ToString("C"));
+                lstOut.Items.Add("Account Name: " + accountName);
+                lstOut.Items.Add("Current Balance: " + currentBal.ToString("C"));
+                lstOut.Items.Add("Deposit: " + deposit.ToString("C"));
+                lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
                 lstOut.Items.Add(newBal.ToString("C"));
             }
             else
