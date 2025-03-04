@@ -52,13 +52,25 @@ namespace ZahreefK
             }
             else
             {
-                lstOut.Items.Add("some of the numeric entruies were not entered correctly");
+                if (!cValid)
+                {
+                    lstOut.Items.Add("Current Balance is not an appropriate value");
+                }
+                if (!dvalid)
+                {
+                    lstOut.Items.Add("Deposit is not an appropriate value");
+                }
             }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult buttonSel;
+            buttonSel = MessageBox.Show("Do you really want to leave?", "Exiting...", MessageBoxButtons.YesNo);
+            if (buttonSel == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void txtAccountName_Leave(object sender, EventArgs e)
