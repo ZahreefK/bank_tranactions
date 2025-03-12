@@ -39,6 +39,11 @@
             lstOut = new ListBox();
             label4 = new Label();
             txtCurrentBalance = new TextBox();
+            groupBox1 = new GroupBox();
+            rdoWithdrawl = new RadioButton();
+            rdoDeposit = new RadioButton();
+            rdoIC = new RadioButton();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -55,7 +60,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(100, 59);
+            label2.Location = new Point(84, 99);
             label2.Name = "label2";
             label2.Size = new Size(87, 15);
             label2.TabIndex = 1;
@@ -63,7 +68,7 @@
             // 
             // txtAccountName
             // 
-            txtAccountName.Location = new Point(241, 56);
+            txtAccountName.Location = new Point(225, 91);
             txtAccountName.Name = "txtAccountName";
             txtAccountName.Size = new Size(182, 23);
             txtAccountName.TabIndex = 2;
@@ -73,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(100, 120);
+            label3.Location = new Point(84, 152);
             label3.Name = "label3";
             label3.Size = new Size(47, 15);
             label3.TabIndex = 5;
@@ -81,7 +86,7 @@
             // 
             // txtDeposit
             // 
-            txtDeposit.Location = new Point(241, 117);
+            txtDeposit.Location = new Point(225, 149);
             txtDeposit.Name = "txtDeposit";
             txtDeposit.Size = new Size(182, 23);
             txtDeposit.TabIndex = 6;
@@ -90,7 +95,7 @@
             // 
             // btnDisplay
             // 
-            btnDisplay.Location = new Point(101, 308);
+            btnDisplay.Location = new Point(84, 338);
             btnDisplay.Name = "btnDisplay";
             btnDisplay.Size = new Size(75, 42);
             btnDisplay.TabIndex = 8;
@@ -100,7 +105,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(212, 308);
+            btnClear.Location = new Point(202, 338);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 42);
             btnClear.TabIndex = 9;
@@ -110,7 +115,7 @@
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(348, 308);
+            btnQuit.Location = new Point(332, 338);
             btnQuit.Name = "btnQuit";
             btnQuit.Size = new Size(75, 42);
             btnQuit.TabIndex = 10;
@@ -122,7 +127,7 @@
             // 
             lstOut.FormattingEnabled = true;
             lstOut.ItemHeight = 15;
-            lstOut.Location = new Point(101, 146);
+            lstOut.Location = new Point(84, 178);
             lstOut.Name = "lstOut";
             lstOut.Size = new Size(323, 139);
             lstOut.TabIndex = 7;
@@ -131,7 +136,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(100, 91);
+            label4.Location = new Point(84, 123);
             label4.Name = "label4";
             label4.Size = new Size(91, 15);
             label4.TabIndex = 3;
@@ -139,18 +144,67 @@
             // 
             // txtCurrentBalance
             // 
-            txtCurrentBalance.Location = new Point(241, 88);
+            txtCurrentBalance.Location = new Point(225, 120);
             txtCurrentBalance.Name = "txtCurrentBalance";
             txtCurrentBalance.Size = new Size(182, 23);
             txtCurrentBalance.TabIndex = 4;
             txtCurrentBalance.Enter += txtCurrentBalance_Enter;
             txtCurrentBalance.Leave += txtCurrentBalance_Leave;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(rdoWithdrawl);
+            groupBox1.Controls.Add(rdoDeposit);
+            groupBox1.Controls.Add(rdoIC);
+            groupBox1.Location = new Point(87, 38);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(320, 47);
+            groupBox1.TabIndex = 11;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Transaction Type";
+            groupBox1.Enter += groupBox1_Enter;
+            // 
+            // rdoWithdrawl
+            // 
+            rdoWithdrawl.AutoSize = true;
+            rdoWithdrawl.Location = new Point(226, 22);
+            rdoWithdrawl.Name = "rdoWithdrawl";
+            rdoWithdrawl.Size = new Size(79, 19);
+            rdoWithdrawl.TabIndex = 2;
+            rdoWithdrawl.Text = "Withdrawl";
+            rdoWithdrawl.UseVisualStyleBackColor = true;
+            rdoWithdrawl.CheckedChanged += rdoWithdrawl_CheckedChanged;
+            // 
+            // rdoDeposit
+            // 
+            rdoDeposit.AutoSize = true;
+            rdoDeposit.Location = new Point(130, 22);
+            rdoDeposit.Name = "rdoDeposit";
+            rdoDeposit.Size = new Size(65, 19);
+            rdoDeposit.TabIndex = 1;
+            rdoDeposit.Text = "Deposit";
+            rdoDeposit.UseVisualStyleBackColor = true;
+            rdoDeposit.CheckedChanged += rdoDeposit_CheckedChanged;
+            // 
+            // rdoIC
+            // 
+            rdoIC.AutoSize = true;
+            rdoIC.Checked = true;
+            rdoIC.Location = new Point(-3, 22);
+            rdoIC.Name = "rdoIC";
+            rdoIC.Size = new Size(127, 19);
+            rdoIC.TabIndex = 0;
+            rdoIC.TabStop = true;
+            rdoIC.Text = "Interest Calculation";
+            rdoIC.UseVisualStyleBackColor = true;
+            rdoIC.CheckedChanged += rdoIC_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(510, 392);
+            Controls.Add(groupBox1);
             Controls.Add(txtCurrentBalance);
             Controls.Add(label4);
             Controls.Add(lstOut);
@@ -164,6 +218,8 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Zahreef Kabir";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -181,5 +237,9 @@
         private ListBox lstOut;
         private Label label4;
         private TextBox txtCurrentBalance;
+        private GroupBox groupBox1;
+        private RadioButton rdoWithdrawl;
+        private RadioButton rdoDeposit;
+        private RadioButton rdoIC;
     }
 }

@@ -2,6 +2,7 @@ namespace ZahreefK
 {
     public partial class Form1 : Form
     {
+        String transType;
         public Form1()
         {
             InitializeComponent();
@@ -9,9 +10,9 @@ namespace ZahreefK
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtAccountName.Text = "";
-            txtDeposit.Text = "";
-            txtCurrentBalance.Text = "";
+            txtAccountName.Clear();
+            txtDeposit.Clear();
+            txtCurrentBalance.Clear();
             lstOut.Items.Clear();
             txtAccountName.Focus();
         }
@@ -90,7 +91,33 @@ namespace ZahreefK
 
         private void txtCurrentBalance_Leave(object sender, EventArgs e)
         {
-            txtCurrentBalance.BackColor= SystemColors.Window;
+            txtCurrentBalance.BackColor = SystemColors.Window;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoIC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoIC.Checked)
+            {
+                transType = "Interest Calculation";
+            }
+        }
+
+        private void rdoDeposit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoDeposit.Checked)
+            {
+                transType = "Deposit";
+            }
+        }
+
+        private void rdoWithdrawl_CheckedChanged(object sender, EventArgs e)
+        {
+            transType = "Deposit";
         }
     }
 }
