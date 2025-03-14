@@ -2,7 +2,10 @@ namespace ZahreefK
 {
     public partial class Form1 : Form
     {
-        String transType;
+        private string transType;
+        const string IC = "Interest Calculated";
+        const string DEPOSIT = "Deposit";
+        const string WITHDRAWL = "Withdrawl";
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +35,8 @@ namespace ZahreefK
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             string accountName;
-            double deposit, currentBal, newBal;
-            bool dvalid, cValid;
+            double transAmount, currentBal, newBal;
+            bool tValid, cValid;
             //read text boxes into variables 
             accountName = txtAccountName.Text;
             //Parse converts strings to ints or doubles
@@ -41,13 +44,28 @@ namespace ZahreefK
                deposit = double.Parse(txtDeposit.Text);
             */
             cValid = double.TryParse(txtCurrentBalance.Text, out currentBal);
-            dvalid = double.TryParse(txtDeposit.Text, out deposit);
-            if (dvalid && cValid)
+            tValid = double.TryParse(txtDeposit.Text, out transAmount);
+            if (tValid && cValid)
             {
-                newBal = (deposit + currentBal);
+                newBal = 0;
+                switch (transType)
+                {
+                    case IC:
+
+                    case DEPOSIT:
+                        newBal = (transAmount + currentBal);
+                        break;
+                    case WITHDRAWL:
+                        newBal = (currentBal - transAmount);
+                        break;
+                    default:
+
+                        break;
+                }
+               
                 lstOut.Items.Add("Account Name: " + accountName);
                 lstOut.Items.Add("Current Balance: " + currentBal.ToString("C"));
-                lstOut.Items.Add("Deposit: " + deposit.ToString("C"));
+                lstOut.Items.Add("Transaction Amount: " + transAmount.ToString("C"));
                 lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
                 lstOut.Items.Add(newBal.ToString("C"));
             }
@@ -57,9 +75,9 @@ namespace ZahreefK
                 {
                     lstOut.Items.Add("Current Balance is not an appropriate value");
                 }
-                if (!dvalid)
+                if (!tValid)
                 {
-                    lstOut.Items.Add("Deposit is not an appropriate value");
+                    lstOut.Items.Add(" is not an appropriate value");
                 }
             }
         }
@@ -104,6 +122,9 @@ namespace ZahreefK
             if (rdoIC.Checked)
             {
                 transType = "Interest Calculation";
+                lblTransAmt.Visible = false;
+                txtDeposit.Visible = false;
+                
             }
         }
 
@@ -112,12 +133,21 @@ namespace ZahreefK
             if (rdoDeposit.Checked)
             {
                 transType = "Deposit";
+                lblTransAmt.Visible = true;
+                txtDeposit.Visible = true;
             }
         }
 
         private void rdoWithdrawl_CheckedChanged(object sender, EventArgs e)
         {
             transType = "Deposit";
+            lblTransAmt.Visible = true;
+            txtDeposit.Visible = true;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            rdoIC.Checked = true;
         }
     }
 }

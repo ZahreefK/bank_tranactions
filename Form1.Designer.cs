@@ -31,7 +31,7 @@
             label1 = new Label();
             label2 = new Label();
             txtAccountName = new TextBox();
-            label3 = new Label();
+            lblTransAmt = new Label();
             txtDeposit = new TextBox();
             btnDisplay = new Button();
             btnClear = new Button();
@@ -75,14 +75,14 @@
             txtAccountName.Enter += txtAccountName_Enter;
             txtAccountName.Leave += txtAccountName_Leave;
             // 
-            // label3
+            // lblTransAmt
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(84, 152);
-            label3.Name = "label3";
-            label3.Size = new Size(47, 15);
-            label3.TabIndex = 5;
-            label3.Text = "Deposit";
+            lblTransAmt.AutoSize = true;
+            lblTransAmt.Location = new Point(84, 152);
+            lblTransAmt.Name = "lblTransAmt";
+            lblTransAmt.Size = new Size(114, 15);
+            lblTransAmt.TabIndex = 5;
+            lblTransAmt.Text = "Transaction Amount";
             // 
             // txtDeposit
             // 
@@ -167,7 +167,7 @@
             // rdoWithdrawl
             // 
             rdoWithdrawl.AutoSize = true;
-            rdoWithdrawl.Location = new Point(226, 22);
+            rdoWithdrawl.Location = new Point(235, 22);
             rdoWithdrawl.Name = "rdoWithdrawl";
             rdoWithdrawl.Size = new Size(79, 19);
             rdoWithdrawl.TabIndex = 2;
@@ -178,7 +178,7 @@
             // rdoDeposit
             // 
             rdoDeposit.AutoSize = true;
-            rdoDeposit.Location = new Point(130, 22);
+            rdoDeposit.Location = new Point(147, 22);
             rdoDeposit.Name = "rdoDeposit";
             rdoDeposit.Size = new Size(65, 19);
             rdoDeposit.TabIndex = 1;
@@ -189,12 +189,10 @@
             // rdoIC
             // 
             rdoIC.AutoSize = true;
-            rdoIC.Checked = true;
-            rdoIC.Location = new Point(-3, 22);
+            rdoIC.Location = new Point(5, 22);
             rdoIC.Name = "rdoIC";
             rdoIC.Size = new Size(127, 19);
             rdoIC.TabIndex = 0;
-            rdoIC.TabStop = true;
             rdoIC.Text = "Interest Calculation";
             rdoIC.UseVisualStyleBackColor = true;
             rdoIC.CheckedChanged += rdoIC_CheckedChanged;
@@ -212,12 +210,13 @@
             Controls.Add(btnClear);
             Controls.Add(btnDisplay);
             Controls.Add(txtDeposit);
-            Controls.Add(label3);
+            Controls.Add(lblTransAmt);
             Controls.Add(txtAccountName);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Zahreef Kabir";
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -229,7 +228,7 @@
         private Label label1;
         private Label label2;
         private TextBox txtAccountName;
-        private Label label3;
+        private Label lblTransAmt;
         private TextBox txtDeposit;
         private Button btnDisplay;
         private Button btnClear;
