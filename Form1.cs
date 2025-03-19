@@ -2,6 +2,9 @@ namespace ZahreefK
 {
     public partial class Form1 : Form
     {
+        private string logFile = "BnkTrans.txt";
+        //private string cfgFile =
+
         private string transType;
         const string IC = "Interest Calculated";
         const string DEPOSIT = "Deposit";
@@ -37,6 +40,7 @@ namespace ZahreefK
             string accountName;
             double transAmount, currentBal, newBal;
             bool tValid, cValid;
+            StreamWriter swLog;
             //read text boxes into variables 
             accountName = txtAccountName.Text;
             //Parse converts strings to ints or doubles
@@ -51,7 +55,10 @@ namespace ZahreefK
                 switch (transType)
                 {
                     case IC:
-
+                        lstOut.Items.Add("Interest Rate: 5%");
+                        transAmount = (currentBal * 0.05);
+                        newBal = (currentBal + transAmount);    
+                        break;
                     case DEPOSIT:
                         newBal = (transAmount + currentBal);
                         break;
@@ -62,12 +69,20 @@ namespace ZahreefK
 
                         break;
                 }
-               
+
                 lstOut.Items.Add("Account Name: " + accountName);
                 lstOut.Items.Add("Current Balance: " + currentBal.ToString("C"));
                 lstOut.Items.Add("Transaction Amount: " + transAmount.ToString("C"));
                 lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
                 lstOut.Items.Add(newBal.ToString("C"));
+                swLog = File.AppendText(logFile);
+                swLog.WriteLine("*** Beginning of Transaction ***");
+                swLog.WriteLine("Account Name: " + accountName);
+                swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
+                swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
+                swLog.WriteLine("New Balance: " + newBal.ToString("C"));
+                swLog.WriteLine(newBal.ToString("C"));
+                swLog.Close();
             }
             else
             {
@@ -124,7 +139,7 @@ namespace ZahreefK
                 transType = "Interest Calculation";
                 lblTransAmt.Visible = false;
                 txtDeposit.Visible = false;
-                
+
             }
         }
 
@@ -140,7 +155,7 @@ namespace ZahreefK
 
         private void rdoWithdrawl_CheckedChanged(object sender, EventArgs e)
         {
-            transType = "Deposit";
+            transType = "Withdrawl";
             lblTransAmt.Visible = true;
             txtDeposit.Visible = true;
         }
@@ -148,6 +163,11 @@ namespace ZahreefK
         private void Form1_Load(object sender, EventArgs e)
         {
             rdoIC.Checked = true;
+        }
+
+        private void lstOut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

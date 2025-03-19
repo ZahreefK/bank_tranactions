@@ -132,6 +132,7 @@
             lstOut.Size = new Size(323, 139);
             lstOut.TabIndex = 7;
             lstOut.TabStop = false;
+            lstOut.SelectedIndexChanged += lstOut_SelectedIndexChanged;
             // 
             // label4
             // 
