@@ -21,6 +21,7 @@ namespace ZahreefK
             txtCurrentBalance.Clear();
             lstOut.Items.Clear();
             txtAccountName.Focus();
+            rdoIC.Checked = true;
         }
 
         private void txtAccountName_Enter(object sender, EventArgs e)
@@ -38,8 +39,8 @@ namespace ZahreefK
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             string accountName;
-            double transAmount, currentBal, newBal;
-            bool tValid, cValid;
+            double transAmount=0, currentBal, newBal;
+            bool tValid = true, cValid;
             StreamWriter swLog;
             //read text boxes into variables 
             accountName = txtAccountName.Text;
@@ -48,7 +49,10 @@ namespace ZahreefK
                deposit = double.Parse(txtDeposit.Text);
             */
             cValid = double.TryParse(txtCurrentBalance.Text, out currentBal);
-            tValid = double.TryParse(txtDeposit.Text, out transAmount);
+            if (txtDeposit.Visible)
+            {
+                tValid = double.TryParse(txtDeposit.Text, out transAmount);
+            }
             if (tValid && cValid)
             {
                 newBal = 0;
@@ -75,6 +79,7 @@ namespace ZahreefK
                 lstOut.Items.Add("Transaction Amount: " + transAmount.ToString("C"));
                 lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
                 lstOut.Items.Add(newBal.ToString("C"));
+                lstOut.Items.Add(DateTime.Now.ToString("G"));
                 swLog = File.AppendText(logFile);
                 swLog.WriteLine("*** Beginning of Transaction ***");
                 swLog.WriteLine("Account Name: " + accountName);
@@ -92,7 +97,7 @@ namespace ZahreefK
                 }
                 if (!tValid)
                 {
-                    lstOut.Items.Add(" is not an appropriate value");
+                    lstOut.Items.Add("Tranactio amount is not an appropriate value");
                 }
             }
         }
