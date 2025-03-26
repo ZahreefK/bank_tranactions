@@ -1,0 +1,42 @@
+*** Beginning of Transaction ***
+Account Name: x
+Current Balance: $34.00
+Transaction Amount: $0.00
+New Balance: $0.00
+$0.00
+*** Beginning of Transaction ***
+Account Name: cv
+Current Balance: $50.00
+Transaction Amount: $0.00
+New Balance: $0.00
+$0.00
+*** Beginning of Transaction ***
+Account Name: f
+Current Balance: $50.00
+Transaction Amount: $0.00
+New Balance: $0.00
+$0.00
+*** Beginning of Transaction ***
+Account Name: f
+Current Balance: $50.00
+Transaction Amount: $0.00
+New Balance: $0.00
+$0.00
+*** Beginning of Transaction ***
+Account Name: ggsdgd
+Current Balance: $345.00
+Transaction Amount: $0.00
+New Balance: $0.00
+$0.00
+*** Beginning of Transaction ***
+Account Name: zahreef
+Current Balance: $300.00
+Transaction Amount: $200.00
+New Balance: $500.00
+$500.00
+*** Beginning of Transaction ***
+Account Name: z
+Current Balance: $300.00
+Transaction Amount: $200.00
+New Balance: $100.00
+$100.00

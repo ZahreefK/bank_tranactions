@@ -9,6 +9,7 @@ namespace ZahreefK
         const string IC = "Interest Calculated";
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
+        private double interestRate = 0.05;
         public Form1()
         {
             InitializeComponent();
@@ -167,7 +168,10 @@ namespace ZahreefK
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            StreamReader srCFG;
             rdoIC.Checked = true;
+
+
         }
 
         private void lstOut_SelectedIndexChanged(object sender, EventArgs e)
