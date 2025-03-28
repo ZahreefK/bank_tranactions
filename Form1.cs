@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace ZahreefK
 {
     public partial class Form1 : Form
@@ -9,6 +11,7 @@ namespace ZahreefK
         const string IC = "Interest Calculated";
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
+        private string interestLogFile = "interestRate.txt";
         private double interestRate = 0.05;
         public Form1()
         {
@@ -40,7 +43,7 @@ namespace ZahreefK
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             string accountName;
-            double transAmount=0, currentBal, newBal;
+            double transAmount = 0, currentBal, newBal;
             bool tValid = true, cValid;
             StreamWriter swLog;
             //read text boxes into variables 
@@ -62,7 +65,7 @@ namespace ZahreefK
                     case IC:
                         lstOut.Items.Add("Interest Rate: 5%");
                         transAmount = (currentBal * 0.05);
-                        newBal = (currentBal + transAmount);    
+                        newBal = (currentBal + transAmount);
                         break;
                     case DEPOSIT:
                         newBal = (transAmount + currentBal);
@@ -98,7 +101,7 @@ namespace ZahreefK
                 }
                 if (!tValid)
                 {
-                    lstOut.Items.Add("Tranactio amount is not an appropriate value");
+                    lstOut.Items.Add("Tranaction amount is not an appropriate value");
                 }
             }
         }
@@ -170,13 +173,32 @@ namespace ZahreefK
         {
             StreamReader srCFG;
             rdoIC.Checked = true;
+            bool bad = true;
+            do
+            {
+                try
+                {
+                    srCFG = File.OpenText(interestLogFile);
+                    bad = false;
+                    try
+                    {
+                        interestRate = double.Parse(srCFG.ReadLine());
+                        srCFG.Close();
+                    }
+                    catch (FormatException ex)
+                    {
+                        interestRate = 0.05;
+                        lstOut.Items.Add("Configuration file was corrupted defult values set");
 
-
-        }
-
-        private void lstOut_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+                    }
+                    srCFG.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Configuration File not found. Please enter a new configuration file", 
+                        "Configuration File Not FOund");
+                }
+            } while (bad);
         }
     }
 }
