@@ -63,8 +63,8 @@ namespace ZahreefK
                 switch (transType)
                 {
                     case IC:
-                        lstOut.Items.Add("Interest Rate: 5%");
-                        transAmount = (currentBal * 0.05);
+                        lstOut.Items.Add("Interest Rate: "+ interestRate.ToString("P0"));
+                        transAmount = (currentBal * interestRate);
                         newBal = (currentBal + transAmount);
                         break;
                     case DEPOSIT:
@@ -85,7 +85,7 @@ namespace ZahreefK
                 lstOut.Items.Add(newBal.ToString("C"));
                 lstOut.Items.Add(DateTime.Now.ToString("G"));
                 swLog = File.AppendText(logFile);
-                swLog.WriteLine("*** Beginning of Transaction ***");
+                swLog.WriteLine("*** Beginning of Transaction *** "+ DateTime.Now.ToString("G"));
                 swLog.WriteLine("Account Name: " + accountName);
                 swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
                 swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
@@ -145,7 +145,7 @@ namespace ZahreefK
         {
             if (rdoIC.Checked)
             {
-                transType = "Interest Calculation";
+                transType = IC;
                 lblTransAmt.Visible = false;
                 txtDeposit.Visible = false;
 
@@ -187,7 +187,7 @@ namespace ZahreefK
                     }
                     catch (FormatException ex)
                     {
-                        interestRate = 0.05;
+      
                         lstOut.Items.Add("Configuration file was corrupted defult values set");
 
                     }
