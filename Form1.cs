@@ -13,6 +13,8 @@ namespace ZahreefK
         const string WITHDRAWL = "Withdrawl";
         private string interestLogFile = "interestRate.txt";
         private double interestRate = 0.05;
+
+        private Form2 sf;
         public Form1()
         {
             InitializeComponent();
@@ -63,7 +65,7 @@ namespace ZahreefK
                 switch (transType)
                 {
                     case IC:
-                        lstOut.Items.Add("Interest Rate: "+ interestRate.ToString("P0"));
+                        lstOut.Items.Add("Interest Rate: " + interestRate.ToString("P0"));
                         transAmount = (currentBal * interestRate);
                         newBal = (currentBal + transAmount);
                         break;
@@ -85,7 +87,7 @@ namespace ZahreefK
                 lstOut.Items.Add(newBal.ToString("C"));
                 lstOut.Items.Add(DateTime.Now.ToString("G"));
                 swLog = File.AppendText(logFile);
-                swLog.WriteLine("*** Beginning of Transaction *** "+ DateTime.Now.ToString("G"));
+                swLog.WriteLine("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"));
                 swLog.WriteLine("Account Name: " + accountName);
                 swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
                 swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
@@ -171,6 +173,7 @@ namespace ZahreefK
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            sf = new Form2();
             StreamReader srCFG;
             rdoIC.Checked = true;
             bool bad = true;
@@ -187,7 +190,7 @@ namespace ZahreefK
                     }
                     catch (FormatException ex)
                     {
-      
+
                         lstOut.Items.Add("Configuration file was corrupted defult values set");
 
                     }
@@ -195,10 +198,18 @@ namespace ZahreefK
                 }
                 catch
                 {
-                    MessageBox.Show("Configuration File not found. Please enter a new configuration file", 
+                    MessageBox.Show("Configuration File not found. Please enter a new configuration file",
                         "Configuration File Not FOund");
                 }
             } while (bad);
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sf.txtIC.ToString();
+            sf.txtDeposit.ToString();
+            sf.txtWithdrawl.ToString();
+            sf.ShowDialog();
         }
     }
 }

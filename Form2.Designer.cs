@@ -28,12 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form2";
+            label1 = new Label();
+            txtIC = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
+            txtWithdrawl = new TextBox();
+            txtDeposit = new TextBox();
+            btnSave = new Button();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(91, 68);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Interest Calculation";
+            // 
+            // txtIC
+            // 
+            txtIC.Location = new Point(206, 65);
+            txtIC.Name = "txtIC";
+            txtIC.Size = new Size(100, 23);
+            txtIC.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(91, 112);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Deposit";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(91, 159);
+            label3.Name = "label3";
+            label3.Size = new Size(61, 15);
+            label3.TabIndex = 3;
+            label3.Text = "Withdrawl";
+            // 
+            // txtWithdrawl
+            // 
+            txtWithdrawl.Location = new Point(206, 156);
+            txtWithdrawl.Name = "txtWithdrawl";
+            txtWithdrawl.Size = new Size(100, 23);
+            txtWithdrawl.TabIndex = 4;
+            // 
+            // txtDeposit
+            // 
+            txtDeposit.Location = new Point(206, 112);
+            txtDeposit.Name = "txtDeposit";
+            txtDeposit.Size = new Size(100, 23);
+            txtDeposit.TabIndex = 5;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(153, 198);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(125, 23);
+            btnSave.TabIndex = 6;
+            btnSave.Text = "Return && Save";
+            btnSave.UseVisualStyleBackColor = true;
+            // 
+            // Form2
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(510, 357);
+            Controls.Add(btnSave);
+            Controls.Add(txtDeposit);
+            Controls.Add(txtWithdrawl);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtIC);
+            Controls.Add(label1);
+            Name = "Form2";
+            Text = "Settings Form";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Button btnSave;
+        internal TextBox txtIC;
+        internal TextBox txtWithdrawl;
+        internal TextBox txtDeposit;
     }
 }

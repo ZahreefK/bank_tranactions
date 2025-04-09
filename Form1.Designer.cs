@@ -43,7 +43,10 @@
             rdoWithdrawl = new RadioButton();
             rdoDeposit = new RadioButton();
             rdoIC = new RadioButton();
+            menuStrip1 = new MenuStrip();
+            settingsToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -197,6 +200,22 @@
             rdoIC.UseVisualStyleBackColor = true;
             rdoIC.CheckedChanged += rdoIC_CheckedChanged;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(510, 24);
+            menuStrip1.TabIndex = 12;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new Size(61, 20);
+            settingsToolStripMenuItem.Text = "Settings";
+            settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -214,11 +233,14 @@
             Controls.Add(txtAccountName);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
             Name = "Form1";
             Text = "Zahreef Kabir";
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -240,5 +262,7 @@
         private RadioButton rdoWithdrawl;
         private RadioButton rdoDeposit;
         private RadioButton rdoIC;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
