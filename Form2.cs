@@ -12,9 +12,21 @@ namespace ZahreefK
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        private Form1 ff;
+        public Form2(Form1 f)
         {
             InitializeComponent();
+            ff = f;
         }
+        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            ff.interestRate = double.Parse(txtIC.Text);
+            StreamWriter sw = File.CreateText(ff);
+            sw.WriteLine(ff.interestRate.ToString());
+            sw.Close();
+
+        }
+        */
     }
 }

@@ -30,11 +30,11 @@
         {
             label1 = new Label();
             txtIC = new TextBox();
+            btnSave = new Button();
+            txtDeposit = new TextBox();
             label2 = new Label();
             label3 = new Label();
             txtWithdrawl = new TextBox();
-            txtDeposit = new TextBox();
-            btnSave = new Button();
             SuspendLayout();
             // 
             // label1
@@ -52,6 +52,23 @@
             txtIC.Name = "txtIC";
             txtIC.Size = new Size(100, 23);
             txtIC.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(153, 198);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(125, 23);
+            btnSave.TabIndex = 6;
+            btnSave.Text = "Return && Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // txtDeposit
+            // 
+            txtDeposit.Location = new Point(206, 112);
+            txtDeposit.Name = "txtDeposit";
+            txtDeposit.Size = new Size(100, 23);
+            txtDeposit.TabIndex = 5;
             // 
             // label2
             // 
@@ -78,22 +95,6 @@
             txtWithdrawl.Size = new Size(100, 23);
             txtWithdrawl.TabIndex = 4;
             // 
-            // txtDeposit
-            // 
-            txtDeposit.Location = new Point(206, 112);
-            txtDeposit.Name = "txtDeposit";
-            txtDeposit.Size = new Size(100, 23);
-            txtDeposit.TabIndex = 5;
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(153, 198);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(125, 23);
-            btnSave.TabIndex = 6;
-            btnSave.Text = "Return && Save";
-            btnSave.UseVisualStyleBackColor = true;
-            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -115,11 +116,11 @@
         #endregion
 
         private Label label1;
-        private Label label2;
-        private Label label3;
         private Button btnSave;
         internal TextBox txtIC;
-        internal TextBox txtWithdrawl;
         internal TextBox txtDeposit;
+        private Label label2;
+        private Label label3;
+        internal TextBox txtWithdrawl;
     }
 }

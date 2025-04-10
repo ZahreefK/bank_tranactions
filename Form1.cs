@@ -12,7 +12,7 @@ namespace ZahreefK
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
         private string interestLogFile = "interestRate.txt";
-        private double interestRate = 0.05;
+        internal private double interestRate = 0.05;
 
         private Form2 sf;
         public Form1()
