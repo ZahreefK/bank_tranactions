@@ -31,10 +31,6 @@
             label1 = new Label();
             txtIC = new TextBox();
             btnSave = new Button();
-            txtDeposit = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
-            txtWithdrawl = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -63,48 +59,12 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // txtDeposit
-            // 
-            txtDeposit.Location = new Point(206, 112);
-            txtDeposit.Name = "txtDeposit";
-            txtDeposit.Size = new Size(100, 23);
-            txtDeposit.TabIndex = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(91, 112);
-            label2.Name = "label2";
-            label2.Size = new Size(47, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Deposit";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(91, 159);
-            label3.Name = "label3";
-            label3.Size = new Size(61, 15);
-            label3.TabIndex = 3;
-            label3.Text = "Withdrawl";
-            // 
-            // txtWithdrawl
-            // 
-            txtWithdrawl.Location = new Point(206, 156);
-            txtWithdrawl.Name = "txtWithdrawl";
-            txtWithdrawl.Size = new Size(100, 23);
-            txtWithdrawl.TabIndex = 4;
-            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(510, 357);
             Controls.Add(btnSave);
-            Controls.Add(txtDeposit);
-            Controls.Add(txtWithdrawl);
-            Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(txtIC);
             Controls.Add(label1);
             Name = "Form2";
@@ -118,9 +78,5 @@
         private Label label1;
         private Button btnSave;
         internal TextBox txtIC;
-        internal TextBox txtDeposit;
-        private Label label2;
-        private Label label3;
-        internal TextBox txtWithdrawl;
     }
 }

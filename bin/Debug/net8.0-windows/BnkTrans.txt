@@ -196,3 +196,27 @@ Current Balance: $100.00
 Transaction Amount: $5.00
 New Balance: $105.00
 $105.00
+*** Beginning of Transaction *** 4/22/2025 7:40:06 PM
+Account Name: gg
+Current Balance: $34.00
+Transaction Amount: $1.70
+New Balance: $35.70
+$35.70
+*** Beginning of Transaction *** 4/22/2025 7:57:25 PM
+Account Name: z
+Current Balance: $10.00
+Transaction Amount: $0.50
+New Balance: $10.50
+$10.50
+*** Beginning of Transaction *** 4/22/2025 8:05:47 PM
+Account Name: Zahreef
+Current Balance: $10.00
+Transaction Amount: $0.50
+New Balance: $10.50
+$10.50
+*** Beginning of Transaction *** 4/22/2025 8:06:49 PM
+Account Name: z
+Current Balance: $45.00
+Transaction Amount: $2.25
+New Balance: $47.25
+$47.25

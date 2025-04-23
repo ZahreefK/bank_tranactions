@@ -1,3 +1,5 @@
+using System.Diagnostics.SymbolStore;
+using System.Runtime.Versioning;
 using System.Security.Cryptography;
 
 namespace ZahreefK
@@ -7,13 +9,26 @@ namespace ZahreefK
         private string logFile = "BnkTrans.txt";
         //private string cfgFile =
 
-        private string transType;
+        private string transType, fName, lName;
         const string IC = "Interest Calculated";
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
-        private string interestLogFile = "interestRate.txt";
-        internal private double interestRate = 0.05;
+        internal string interestcfgFile = "interestRate.txt";
+        const double MINRATE = 0;
+        const double MAXRATE = .07;
+        private double interestRate = 0.05;
 
+        internal double InterestRate
+        {
+            get { return interestRate; }
+            set
+            {
+                if (value > MINRATE && value < MAXRATE)
+                {
+                    interestRate = value;
+                }
+            }
+        }
         private Form2 sf;
         public Form1()
         {
@@ -49,7 +64,14 @@ namespace ZahreefK
             bool tValid = true, cValid;
             StreamWriter swLog;
             //read text boxes into variables 
-            accountName = txtAccountName.Text;
+            accountName = txtAccountName.Text.Trim();
+            int posSpace = accountName.IndexOf(' ');
+            if (posSpace > 0)
+            {
+                fName = accountName.Substring(posSpace, 0);
+                lName = accountName.Substring(++posSpace).Trim();
+
+            }
             //Parse converts strings to ints or doubles
             /*
                deposit = double.Parse(txtDeposit.Text);
@@ -173,7 +195,7 @@ namespace ZahreefK
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            sf = new Form2();
+            sf = new Form2(this);
             StreamReader srCFG;
             rdoIC.Checked = true;
             bool bad = true;
@@ -181,7 +203,7 @@ namespace ZahreefK
             {
                 try
                 {
-                    srCFG = File.OpenText(interestLogFile);
+                    srCFG = File.OpenText(interestcfgFile);
                     bad = false;
                     try
                     {
@@ -206,9 +228,7 @@ namespace ZahreefK
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sf.txtIC.ToString();
-            sf.txtDeposit.ToString();
-            sf.txtWithdrawl.ToString();
+            sf.txtIC.Text = InterestRate.ToString();
             sf.ShowDialog();
         }
     }

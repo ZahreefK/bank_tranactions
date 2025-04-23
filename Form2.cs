@@ -21,12 +21,13 @@ namespace ZahreefK
         
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ff.interestRate = double.Parse(txtIC.Text);
-            StreamWriter sw = File.CreateText(ff);
-            sw.WriteLine(ff.interestRate.ToString());
+            ff.InterestRate = double.Parse(txtIC.Text);
+            StreamWriter sw = File.CreateText(ff.interestcfgFile);
+            sw.WriteLine(ff.InterestRate.ToString());
             sw.Close();
+            this.Hide();
 
         }
-        */
+        
     }
 }
