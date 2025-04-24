@@ -106,7 +106,7 @@ namespace ZahreefK
                 lstOut.Items.Add("Current Balance: " + currentBal.ToString("C"));
                 lstOut.Items.Add("Transaction Amount: " + transAmount.ToString("C"));
                 lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
-                lstOut.Items.Add(newBal.ToString("C"));
+                //lstOut.Items.Add(newBal.ToString("C"));
                 lstOut.Items.Add(DateTime.Now.ToString("G"));
                 swLog = File.AppendText(logFile);
                 swLog.WriteLine("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"));
@@ -114,7 +114,7 @@ namespace ZahreefK
                 swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
                 swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
                 swLog.WriteLine("New Balance: " + newBal.ToString("C"));
-                swLog.WriteLine(newBal.ToString("C"));
+                //swLog.WriteLine(newBal.ToString("C"));
                 swLog.Close();
             }
             else
@@ -230,6 +230,24 @@ namespace ZahreefK
         {
             sf.txtIC.Text = InterestRate.ToString();
             sf.ShowDialog();
+        }
+
+        private void showLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            const int MAX_LINES = 2000;
+            string[] logLines = new string[MAX_LINES];
+            StreamReader sr = File.OpenText(logFile);
+            int numLines = 0;
+            while (!sr.EndOfStream) {
+                logLines[numLines] = sr.ReadLine();
+                numLines++;
+            }
+            sr.Close();
+
+            for(int i = 0; i < numLines; i++)
+            {
+                lstOut.Items.Add(logLines[i]);
+            }
         }
     }
 }

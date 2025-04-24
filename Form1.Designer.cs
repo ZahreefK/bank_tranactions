@@ -45,6 +45,8 @@
             rdoIC = new RadioButton();
             menuStrip1 = new MenuStrip();
             settingsToolStripMenuItem = new ToolStripMenuItem();
+            showLogToolStripMenuItem = new ToolStripMenuItem();
+            quitToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -202,7 +204,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, showLogToolStripMenuItem, quitToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(510, 24);
@@ -215,6 +217,20 @@
             settingsToolStripMenuItem.Size = new Size(61, 20);
             settingsToolStripMenuItem.Text = "Settings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+            // 
+            // showLogToolStripMenuItem
+            // 
+            showLogToolStripMenuItem.Name = "showLogToolStripMenuItem";
+            showLogToolStripMenuItem.Size = new Size(68, 20);
+            showLogToolStripMenuItem.Text = "Show log";
+            showLogToolStripMenuItem.Click += showLogToolStripMenuItem_Click;
+            // 
+            // quitToolStripMenuItem
+            // 
+            quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            quitToolStripMenuItem.Size = new Size(42, 20);
+            quitToolStripMenuItem.Text = "Quit";
+            quitToolStripMenuItem.Click += btnQuit_Click;
             // 
             // Form1
             // 
@@ -264,5 +280,7 @@
         private RadioButton rdoIC;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem showLogToolStripMenuItem;
+        private ToolStripMenuItem quitToolStripMenuItem;
     }
 }
