@@ -18,7 +18,7 @@ namespace ZahreefK
             InitializeComponent();
             ff = f;
         }
-        
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             ff.InterestRate = double.Parse(txtIC.Text);
@@ -28,6 +28,10 @@ namespace ZahreefK
             this.Hide();
 
         }
-        
+
+        private void txtIC_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

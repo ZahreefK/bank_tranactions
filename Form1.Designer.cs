@@ -67,9 +67,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(84, 99);
             label2.Name = "label2";
-            label2.Size = new Size(87, 15);
+            label2.Size = new Size(39, 15);
             label2.TabIndex = 1;
-            label2.Text = "Account Name";
+            label2.Text = "Name";
             // 
             // txtAccountName
             // 
@@ -183,7 +183,7 @@
             // rdoDeposit
             // 
             rdoDeposit.AutoSize = true;
-            rdoDeposit.Location = new Point(147, 22);
+            rdoDeposit.Location = new Point(138, 22);
             rdoDeposit.Name = "rdoDeposit";
             rdoDeposit.Size = new Size(65, 19);
             rdoDeposit.TabIndex = 1;

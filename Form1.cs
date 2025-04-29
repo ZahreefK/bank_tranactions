@@ -10,13 +10,13 @@ namespace ZahreefK
         //private string cfgFile =
 
         private string transType, fName, lName;
-        const string IC = "Interest Calculated";
+        const string IC = "Interest Calculation";
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
         internal string interestcfgFile = "interestRate.txt";
         const double MINRATE = 0;
         const double MAXRATE = .07;
-        private double interestRate = 0.05;
+        private double interestRate;
 
         internal double InterestRate
         {
@@ -101,8 +101,8 @@ namespace ZahreefK
 
                         break;
                 }
-
-                lstOut.Items.Add("Account Name: " + accountName);
+                lstOut.Items.Add("Transaction Type: " + transType);
+                lstOut.Items.Add("Name: " + accountName);
                 lstOut.Items.Add("Current Balance: " + currentBal.ToString("C"));
                 lstOut.Items.Add("Transaction Amount: " + transAmount.ToString("C"));
                 lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
@@ -111,6 +111,7 @@ namespace ZahreefK
                 swLog = File.AppendText(logFile);
                 swLog.WriteLine("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"));
                 swLog.WriteLine("Account Name: " + accountName);
+                swLog.WriteLine("Transaction Type: " + transType);
                 swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
                 swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
                 swLog.WriteLine("New Balance: " + newBal.ToString("C"));
@@ -243,10 +244,17 @@ namespace ZahreefK
                 numLines++;
             }
             sr.Close();
-
+            int beg = -2;
+            int end = 3;
             for(int i = 0; i < numLines; i++)
             {
-                lstOut.Items.Add(logLines[i]);
+                if (logLines[i] == "Transaction Type: " + transType)
+                {
+                    for (int j=i+beg; j<=i+end; j++)
+                    {
+                        lstOut.Items.Add(logLines[j]);
+                    }
+                }
             }
         }
     }

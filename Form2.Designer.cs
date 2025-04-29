@@ -48,6 +48,7 @@
             txtIC.Name = "txtIC";
             txtIC.Size = new Size(100, 23);
             txtIC.TabIndex = 1;
+            txtIC.TextChanged += txtIC_TextChanged;
             // 
             // btnSave
             // 
