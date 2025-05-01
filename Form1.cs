@@ -13,6 +13,9 @@ namespace ZahreefK
         const string IC = "Interest Calculation";
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
+        const int LISTBOX = 1;
+        const int LOGFILE = 2;
+        const int BOTH = 3;
         internal string interestcfgFile = "interestRate.txt";
         const double MINRATE = 0;
         const double MAXRATE = .07;
@@ -101,22 +104,24 @@ namespace ZahreefK
 
                         break;
                 }
-                lstOut.Items.Add("Transaction Type: " + transType);
-                lstOut.Items.Add("Name: " + accountName);
-                lstOut.Items.Add("Current Balance: " + currentBal.ToString("C"));
-                lstOut.Items.Add("Transaction Amount: " + transAmount.ToString("C"));
-                lstOut.Items.Add("New Balance: " + newBal.ToString("C"));
-                //lstOut.Items.Add(newBal.ToString("C"));
-                lstOut.Items.Add(DateTime.Now.ToString("G"));
+
+                outputTransaction("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"), LOGFILE);
+                outputTransaction("Account Name: " + accountName, BOTH);
+                outputTransaction("Transaction Type: " + transType, BOTH);
+                outputTransaction("Current Balance: " + currentBal.ToString("C"), BOTH);
+                outputTransaction("Transaction Amount: " + transAmount.ToString("C"), BOTH);
+                outputTransaction("New Balance: " + newBal.ToString("C"), BOTH);
+
                 swLog = File.AppendText(logFile);
                 swLog.WriteLine("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"));
                 swLog.WriteLine("Account Name: " + accountName);
                 swLog.WriteLine("Transaction Type: " + transType);
                 swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
                 swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
-                swLog.WriteLine("New Balance: " + newBal.ToString("C"));
-                //swLog.WriteLine(newBal.ToString("C"));
+                swLog.WriteLine("New Balance: " + newBal.ToString("C"));               
                 swLog.Close();
+                
+                
             }
             else
             {
@@ -128,6 +133,21 @@ namespace ZahreefK
                 {
                     lstOut.Items.Add("Tranaction amount is not an appropriate value");
                 }
+            }
+        }
+         
+        private void outputTransaction(string msg, int outputType)
+        {
+                if(outputType == LISTBOX || outputType == BOTH)
+            {
+                lstOut.Items.Add(msg);
+            }
+                if(outputType == LOGFILE || outputType == BOTH)
+            {
+                StreamWriter swLog;
+                swLog = File.AppendText(logFile);
+                swLog.WriteLine(msg);
+                swLog.Close();
             }
         }
 
