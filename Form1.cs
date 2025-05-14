@@ -9,13 +9,13 @@ namespace ZahreefK
         private string logFile = "BnkTrans.txt";
         //private string cfgFile =
 
-        private string transType, fName, lName;
         const string IC = "Interest Calculation";
         const string DEPOSIT = "Deposit";
         const string WITHDRAWL = "Withdrawl";
         const int LISTBOX = 1;
         const int LOGFILE = 2;
         const int BOTH = 3;
+        private string transType = IC;
         internal string interestcfgFile = "interestRate.txt";
         const double MINRATE = 0;
         const double MAXRATE = .07;
@@ -41,7 +41,7 @@ namespace ZahreefK
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtAccountName.Clear();
-            txtDeposit.Clear();
+            txtTransAct.Clear();
             txtCurrentBalance.Clear();
             lstOut.Items.Clear();
             txtAccountName.Focus();
@@ -57,7 +57,7 @@ namespace ZahreefK
 
         private void txtDeposit_Enter(object sender, EventArgs e)
         {
-            txtDeposit.BackColor = Color.Beige;
+            txtTransAct.BackColor = Color.Beige;
         }
 
         private void btnDisplay_Click(object sender, EventArgs e)
@@ -71,8 +71,8 @@ namespace ZahreefK
             int posSpace = accountName.IndexOf(' ');
             if (posSpace > 0)
             {
-                fName = accountName.Substring(posSpace, 0);
-                lName = accountName.Substring(++posSpace).Trim();
+                //fName = accountName.Substring(posSpace, 0);
+                //lName = accountName.Substring(++posSpace).Trim();
 
             }
             //Parse converts strings to ints or doubles
@@ -80,9 +80,9 @@ namespace ZahreefK
                deposit = double.Parse(txtDeposit.Text);
             */
             cValid = double.TryParse(txtCurrentBalance.Text, out currentBal);
-            if (txtDeposit.Visible)
+            if (txtTransAct.Visible)
             {
-                tValid = double.TryParse(txtDeposit.Text, out transAmount);
+                tValid = double.TryParse(txtTransAct.Text, out transAmount);
             }
             if (tValid && cValid)
             {
@@ -90,38 +90,51 @@ namespace ZahreefK
                 switch (transType)
                 {
                     case IC:
-                        lstOut.Items.Add("Interest Rate: " + interestRate.ToString("P0"));
+                        outputTransaction("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"), LOGFILE);
+                        outputTransaction("Interest Rate: " + interestRate.ToString("P0"), BOTH);
                         transAmount = (currentBal * interestRate);
                         newBal = (currentBal + transAmount);
                         break;
                     case DEPOSIT:
+                        outputTransaction("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"), LOGFILE);
                         newBal = (transAmount + currentBal);
                         break;
                     case WITHDRAWL:
-                        newBal = (currentBal - transAmount);
+                        if (transAmount > currentBal)
+                        {
+                            lstOut.Items.Add("Insufficient Funds");
+                            return;
+                        }
+                        else
+                        {
+                            outputTransaction("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"), LOGFILE);
+                            newBal = (currentBal - transAmount);
+                        }
                         break;
                     default:
 
                         break;
                 }
 
-                outputTransaction("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"), LOGFILE);
+                
                 outputTransaction("Account Name: " + accountName, BOTH);
                 outputTransaction("Transaction Type: " + transType, BOTH);
                 outputTransaction("Current Balance: " + currentBal.ToString("C"), BOTH);
                 outputTransaction("Transaction Amount: " + transAmount.ToString("C"), BOTH);
                 outputTransaction("New Balance: " + newBal.ToString("C"), BOTH);
 
+                /*
                 swLog = File.AppendText(logFile);
                 swLog.WriteLine("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"));
                 swLog.WriteLine("Account Name: " + accountName);
                 swLog.WriteLine("Transaction Type: " + transType);
                 swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
                 swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
-                swLog.WriteLine("New Balance: " + newBal.ToString("C"));               
+                swLog.WriteLine("New Balance: " + newBal.ToString("C"));
                 swLog.Close();
-                
-                
+                */
+
+
             }
             else
             {
@@ -131,18 +144,18 @@ namespace ZahreefK
                 }
                 if (!tValid)
                 {
-                    lstOut.Items.Add("Tranaction amount is not an appropriate value");
+                    lstOut.Items.Add("Transaction amount is not an appropriate value");
                 }
             }
         }
-         
+
         private void outputTransaction(string msg, int outputType)
         {
-                if(outputType == LISTBOX || outputType == BOTH)
+            if (outputType == LISTBOX || outputType == BOTH)
             {
                 lstOut.Items.Add(msg);
             }
-                if(outputType == LOGFILE || outputType == BOTH)
+            if (outputType == LOGFILE || outputType == BOTH)
             {
                 StreamWriter swLog;
                 swLog = File.AppendText(logFile);
@@ -168,7 +181,7 @@ namespace ZahreefK
 
         private void txtDeposit_Leave(object sender, EventArgs e)
         {
-            txtDeposit.BackColor = SystemColors.Window;
+            txtTransAct.BackColor = SystemColors.Window;
         }
 
         private void txtCurrentBalance_Enter(object sender, EventArgs e)
@@ -192,7 +205,7 @@ namespace ZahreefK
             {
                 transType = IC;
                 lblTransAmt.Visible = false;
-                txtDeposit.Visible = false;
+                txtTransAct.Visible = false;
 
             }
         }
@@ -203,7 +216,7 @@ namespace ZahreefK
             {
                 transType = "Deposit";
                 lblTransAmt.Visible = true;
-                txtDeposit.Visible = true;
+                txtTransAct.Visible = true;
             }
         }
 
@@ -211,7 +224,7 @@ namespace ZahreefK
         {
             transType = "Withdrawl";
             lblTransAmt.Visible = true;
-            txtDeposit.Visible = true;
+            txtTransAct.Visible = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -239,10 +252,12 @@ namespace ZahreefK
                     }
                     srCFG.Close();
                 }
-                catch
+                catch(FileNotFoundException ex)
                 {
                     MessageBox.Show("Configuration File not found. Please enter a new configuration file",
                         "Configuration File Not FOund");
+                    openFileDialog1.ShowDialog();
+                    interestcfgFile = openFileDialog1.FileName;
                 }
             } while (bad);
         }
@@ -259,23 +274,29 @@ namespace ZahreefK
             string[] logLines = new string[MAX_LINES];
             StreamReader sr = File.OpenText(logFile);
             int numLines = 0;
-            while (!sr.EndOfStream) {
+            while (!sr.EndOfStream)
+            {
                 logLines[numLines] = sr.ReadLine();
                 numLines++;
             }
             sr.Close();
-            int beg = -2;
+            int beg = -3;
             int end = 3;
-            for(int i = 0; i < numLines; i++)
+            for (int i = 0; i < numLines; i++)
             {
                 if (logLines[i] == "Transaction Type: " + transType)
                 {
-                    for (int j=i+beg; j<=i+end; j++)
+                    for (int j = i + beg; j <= i + end; j++)
                     {
                         lstOut.Items.Add(logLines[j]);
                     }
                 }
             }
+        }
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

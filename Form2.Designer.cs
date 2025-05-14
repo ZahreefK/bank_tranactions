@@ -41,6 +41,7 @@
             label1.Size = new Size(109, 15);
             label1.TabIndex = 0;
             label1.Text = "Interest Calculation";
+            label1.Click += label1_Click;
             // 
             // txtIC
             // 

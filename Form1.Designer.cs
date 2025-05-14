@@ -32,7 +32,7 @@
             label2 = new Label();
             txtAccountName = new TextBox();
             lblTransAmt = new Label();
-            txtDeposit = new TextBox();
+            txtTransAct = new TextBox();
             btnDisplay = new Button();
             btnClear = new Button();
             btnQuit = new Button();
@@ -47,6 +47,7 @@
             settingsToolStripMenuItem = new ToolStripMenuItem();
             showLogToolStripMenuItem = new ToolStripMenuItem();
             quitToolStripMenuItem = new ToolStripMenuItem();
+            openFileDialog1 = new OpenFileDialog();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -89,14 +90,14 @@
             lblTransAmt.TabIndex = 5;
             lblTransAmt.Text = "Transaction Amount";
             // 
-            // txtDeposit
+            // txtTransAct
             // 
-            txtDeposit.Location = new Point(225, 149);
-            txtDeposit.Name = "txtDeposit";
-            txtDeposit.Size = new Size(182, 23);
-            txtDeposit.TabIndex = 6;
-            txtDeposit.Enter += txtDeposit_Enter;
-            txtDeposit.Leave += txtDeposit_Leave;
+            txtTransAct.Location = new Point(225, 149);
+            txtTransAct.Name = "txtTransAct";
+            txtTransAct.Size = new Size(182, 23);
+            txtTransAct.TabIndex = 6;
+            txtTransAct.Enter += txtDeposit_Enter;
+            txtTransAct.Leave += txtDeposit_Leave;
             // 
             // btnDisplay
             // 
@@ -207,7 +208,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, showLogToolStripMenuItem, quitToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(510, 24);
+            menuStrip1.Size = new Size(478, 24);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -232,11 +233,16 @@
             quitToolStripMenuItem.Text = "Quit";
             quitToolStripMenuItem.Click += btnQuit_Click;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.FileOk += openFileDialog1_FileOk;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 392);
+            ClientSize = new Size(478, 434);
             Controls.Add(groupBox1);
             Controls.Add(txtCurrentBalance);
             Controls.Add(label4);
@@ -244,7 +250,7 @@
             Controls.Add(btnQuit);
             Controls.Add(btnClear);
             Controls.Add(btnDisplay);
-            Controls.Add(txtDeposit);
+            Controls.Add(txtTransAct);
             Controls.Add(lblTransAmt);
             Controls.Add(txtAccountName);
             Controls.Add(label2);
@@ -267,7 +273,7 @@
         private Label label2;
         private TextBox txtAccountName;
         private Label lblTransAmt;
-        private TextBox txtDeposit;
+        private TextBox txtTransAct;
         private Button btnDisplay;
         private Button btnClear;
         private Button btnQuit;
@@ -282,5 +288,6 @@
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem showLogToolStripMenuItem;
         private ToolStripMenuItem quitToolStripMenuItem;
+        private OpenFileDialog openFileDialog1;
     }
 }
