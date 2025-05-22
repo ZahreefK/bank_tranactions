@@ -5,3 +5,57 @@ Transaction Type: Interest Calculation
 Current Balance: $100.00
 Transaction Amount: $2.00
 New Balance: $102.00
+*** Beginning of Transaction *** 5/22/2025 6:40:14 PM
+Interest Rate: 2%
+Account Name: Zahreef
+Transaction Type: Interest Calculation
+Current Balance: $100.00
+Transaction Amount: $2.00
+New Balance: $102.00
+*** Beginning of Transaction *** 5/22/2025 6:40:56 PM
+Interest Rate: 2%
+Account Name: Zahreef
+Transaction Type: Interest Calculation
+Current Balance: $100.00
+Transaction Amount: $2.00
+New Balance: $102.00
+*** Beginning of Transaction *** 5/22/2025 6:41:39 PM
+Interest Rate: 6%
+Account Name: Z
+Transaction Type: Interest Calculation
+Current Balance: $1,000.00
+Transaction Amount: $60.00
+New Balance: $1,060.00
+*** Beginning of Transaction *** 5/22/2025 6:45:18 PM
+Interest Rate: 6%
+Account Name: 3
+Transaction Type: Interest Calculation
+Current Balance: $3.00
+Transaction Amount: $0.18
+New Balance: $3.18
+*** Beginning of Transaction *** 5/22/2025 6:47:30 PM
+Interest Rate: 6%
+Account Name: z
+Transaction Type: Interest Calculation
+Current Balance: $5.00
+Transaction Amount: $0.30
+New Balance: $5.30
+*** Beginning of Transaction *** 5/22/2025 6:47:45 PM
+Account Name: r
+Transaction Type: Deposit
+Current Balance: $4.00
+Transaction Amount: $5.00
+New Balance: $9.00
+*** Beginning of Transaction *** 5/22/2025 6:47:56 PM
+Account Name: r
+Transaction Type: Withdrawl
+Current Balance: $7.00
+Transaction Amount: $5.00
+New Balance: $2.00
+*** Beginning of Transaction *** 5/22/2025 6:57:18 PM
+Interest Rate: 6%
+Account Name: z
+Transaction Type: Interest Calculation
+Current Balance: $13.00
+Transaction Amount: $0.78
+New Balance: $13.78

@@ -7,7 +7,6 @@ namespace ZahreefK
     public partial class Form1 : Form
     {
         private string logFile = "BnkTrans.txt";
-        //private string cfgFile =
 
         const string IC = "Interest Calculation";
         const string DEPOSIT = "Deposit";
@@ -68,17 +67,7 @@ namespace ZahreefK
             StreamWriter swLog;
             //read text boxes into variables 
             accountName = txtAccountName.Text.Trim();
-            int posSpace = accountName.IndexOf(' ');
-            if (posSpace > 0)
-            {
-                //fName = accountName.Substring(posSpace, 0);
-                //lName = accountName.Substring(++posSpace).Trim();
-
-            }
-            //Parse converts strings to ints or doubles
-            /*
-               deposit = double.Parse(txtDeposit.Text);
-            */
+            
             cValid = double.TryParse(txtCurrentBalance.Text, out currentBal);
             if (txtTransAct.Visible)
             {
@@ -122,18 +111,6 @@ namespace ZahreefK
                 outputTransaction("Current Balance: " + currentBal.ToString("C"), BOTH);
                 outputTransaction("Transaction Amount: " + transAmount.ToString("C"), BOTH);
                 outputTransaction("New Balance: " + newBal.ToString("C"), BOTH);
-
-                /*
-                swLog = File.AppendText(logFile);
-                swLog.WriteLine("*** Beginning of Transaction *** " + DateTime.Now.ToString("G"));
-                swLog.WriteLine("Account Name: " + accountName);
-                swLog.WriteLine("Transaction Type: " + transType);
-                swLog.WriteLine("Current Balance: " + currentBal.ToString("C"));
-                swLog.WriteLine("Transaction Amount: " + transAmount.ToString("C"));
-                swLog.WriteLine("New Balance: " + newBal.ToString("C"));
-                swLog.Close();
-                */
-
 
             }
             else
@@ -292,11 +269,6 @@ namespace ZahreefK
                     }
                 }
             }
-        }
-
-        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
         }
     }
 }
